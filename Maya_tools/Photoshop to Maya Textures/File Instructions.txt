@@ -1,0 +1,51 @@
+PYTHON FILES:
+
+MayaCmdPrt
+mayaSocket
+updateTexture
+
+
+JAVA SCRIPT FILE:
+
+photoshopSave_MayaUpdate
+
+
+
+
+Copy all python files to <PATH>\Documents\maya\<VERSION>-x64\script
+Copy Java Script file to <PATH>\Adobe Photoshop <VERSION>\Presets\Scripts
+
+1.Open Maya
+2.Open Maya Script Editor
+3.In python tab type --import MayaCmdPrt-- (without the --), type this everytime you restart Maya
+4.In photoshop go to Files->Scripts->photoshopSave_MayaUpdate (or set a shortcut)
+5.UI opens asking for data, enter the right data and click Save
+  if "update textures in maya" is checked and maya is open and maya scene is open and textures exist   in scene, they get updated as well
+
+
+
+>> Maya needs to be opened and textures applied to objects for update to work, else only save operation    works
+
+>> A photoshopTemp folder gets created in documents folder to save the user input and bring it back the    next time.
+
+
+PHOTOSHOP UI DETAILS:
+
+LAYERSET NAMES  :   Enter the layerset names or Layer names with comma seperation (LS1,LS2,LS3,.....)
+	            make sure to give the right layerset names, its case sensitive
+
+SAVE PATH       :   Enter the destination folder and make sure it exists
+		    files gets saved to that folder as .png and .tga
+		    the .psd name gets appended to layerset name as filename for saving
+
+MAYA VERSION    :   Enter the Maya version that you are using
+
+
+feedbacks are welcome, please let me know if there is any error or any suggestion to improve the script
+
+
+
+
+
+
+

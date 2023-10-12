@@ -1,0 +1,17 @@
+circleX
+circleY
+circleZ
+squareX
+squareY
+squareZ
+cube
+sphere
+cylinder
+cone
+arrowX
+arrowY
+arrowZ
+plus
+locator
+translate
+rotate
