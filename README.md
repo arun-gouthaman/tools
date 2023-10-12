@@ -2,7 +2,7 @@
 
 collection of my works and references
 
-For maya tools
+For maya tools\n
 maya tools collection All scripts created and tested with maya 2016
 
 Copy all files to maya scripts folder and run below command to display menu
@@ -17,5 +17,5 @@ Spiral script not included in menu Will be included later with UI
 
 Photoshop to maya textures, runs UI in photoshop to save individual layer groups as individual images and update texture in maya if maya is open and texture is present in scene
 
-USD Rreference file
+USD Rreference file\n
 C++ file containing few basic USD codes as reference.
