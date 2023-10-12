@@ -26,13 +26,14 @@
 
 using namespace pxr;
 
-
+// Create stage at given path
 UsdStageRefPtr get_stage(const std::string& file_path)
 {
 	UsdStageRefPtr stage = UsdStage::CreateNew(file_path);
 	return stage;
 }
 
+// Get UsdAttribute object if the attribute is found in the prim
 UsdAttribute get_attr(UsdPrim prim, TfToken attr_name)
 {
 	UsdAttribute attr = prim.GetAttribute(attr_name);
@@ -44,6 +45,7 @@ UsdAttribute get_attr(UsdPrim prim, TfToken attr_name)
 	return UsdAttribute();
 }
 
+// Set attribute on given prim and attribute name
 void set_attr(UsdPrim prim, TfToken attr_name, VtValue attr_val)
 {
 	UsdAttribute attr = get_attr(prim, attr_name);
@@ -54,6 +56,7 @@ void set_attr(UsdPrim prim, TfToken attr_name, VtValue attr_val)
 	attr.Set(attr_val);
 }
 
+// Prim information from given stage
 void inspect_stage(UsdStageRefPtr stage)
 {
 	std::cout << "Inspecting Stage\n";
@@ -85,31 +88,36 @@ void inspect_stage(UsdStageRefPtr stage)
 	}
 }
 
+// Set document string on root layer
 void add_documentation(UsdStageRefPtr stage, std::string doc_str)
 {
 	stage->GetRootLayer()->SetDocumentation(doc_str);
 }
-
+// Create Xform prim  
 UsdGeomXform create_xform(UsdStageRefPtr stage, SdfPath xform_path)
 {
 	return UsdGeomXform::Define(stage, xform_path);
 }
 
+// Create Sphere Prim
 UsdGeomSphere create_sphere(UsdStageRefPtr stage, SdfPath sphere_path)
 {
 	return UsdGeomSphere::Define(stage, sphere_path);
 }
 
+// Set given kind on given prim
 template <class T>
 void set_kind(T prim, TfToken kind_name)
 {
 	UsdModelAPI(prim).SetKind(kind_name);
 }
 
+
 void set_asset_info(UsdPrim prim, TfToken key, VtValue val)
 {
 	prim.SetAssetInfoByKey(key, val);
 }
+
 
 void add_user_property(UsdPrim prim, TfToken property_name, SdfValueTypeName type_name,  VtValue property_val)
 {
@@ -127,6 +135,7 @@ void resolve_info(UsdPrim prim, TfToken attr_name)
 	std::cout << get_attr(prim, attr_name).GetResolveInfo().GetSource() << "\n";
 }
 
+// Create .usda file with prim spheres for test
 UsdStageRefPtr spheres_test(std::string sphere_file_name)
 {
 	std::string usd_file = "C://my_files//USD_Trainig//CPP//helloworld//usda_files//" + sphere_file_name + ".usda";
@@ -170,6 +179,7 @@ UsdStageRefPtr spheres_test(std::string sphere_file_name)
 	return stage;
 }
 
+// Resolve info test, get the attribute's source
 void resolve_info_test()
 {
 	UsdStageRefPtr stage = UsdStage::Open("C:\\my_files\\USD_Trainig\\CPP\\helloworld\\usda_files\\resolve_info\\usd_resolve_info.usda");
@@ -182,14 +192,13 @@ void resolve_info_test()
 	std::cout << UsdResolveInfoSourceValueClips << "\n";
 }
 
+// Create a main_file.usda file and reference sphere_ref_test.usda file.
 UsdStageRefPtr create_reference()
 {
 	UsdStageRefPtr stage = spheres_test(std::string("sphere_ref_test"));
 	SdfLayerHandle sphere_root = stage->GetRootLayer();
 	UsdPrim prim = stage->GetPrimAtPath(SdfPath("/root"));
 	std::string identifier = sphere_root->GetIdentifier();
-
-
 
 	UsdStageRefPtr main_stage = get_stage("C://my_files//USD_Trainig//CPP//helloworld//usda_files//main_file.usda");
 
@@ -206,6 +215,7 @@ UsdStageRefPtr create_reference()
 	return stage;
 }
 
+// Create main_file.usda and add sphere_sublayer_test.usda as sub layer
 UsdStageRefPtr create_sublayer()
 {
 	UsdStageRefPtr stage = spheres_test(std::string("sphere_sublayer_test"));
@@ -233,6 +243,7 @@ UsdStageRefPtr create_sublayer()
 	return stage;
 }
 
+// Setting edit target to the sublayer in usda file
 UsdStageRefPtr sub_layer_edit_target_test()
 {
 	create_sublayer();
@@ -261,6 +272,8 @@ UsdStageRefPtr sub_layer_edit_target_test()
 	return stage;
 }
 
+
+// Setting edit target to reference layer in usda file
 UsdStageRefPtr ref_layer_edit_target_test()
 {
 	create_reference();
@@ -305,6 +318,7 @@ UsdStageRefPtr ref_layer_edit_target_test()
 	return stage;
 }
 
+// Copied from https://github.com/ColinKennedy/USD-Cookbook to test
 void change_block()
 {
 	auto layer = pxr::SdfLayer::CreateAnonymous();
@@ -344,6 +358,7 @@ void change_block()
 	result = nullptr;
 }
 
+// Adding information using SdfChangeBlock to sublayer or reference setting them as EditTargetLayer
 void change_block_test()
 {
 	UsdStageRefPtr stage = ref_layer_edit_target_test();
