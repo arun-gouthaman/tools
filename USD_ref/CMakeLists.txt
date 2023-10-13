@@ -9,12 +9,18 @@ set( LIBRARY_NAME USD_Ref )
 
 set(INCLUDE_DIR ${PYTHON_DIR}include ${USD_DIR}include)
 
-cmake_print_variables(INCLUDE_DIR)
+# cmake_print_variables(INCLUDE_DIR)
 
+
+file(GLOB SRC_FILES
+    "${CMAKE_CURRENT_LIST_DIR}/src/*"
+)
+
+cmake_print_variables(SRC_FILES)
 
 add_executable(
     ${LIBRARY_NAME}
-    ../src/main.cpp
+    ${SRC_FILES}
 )
 
 include_directories(
