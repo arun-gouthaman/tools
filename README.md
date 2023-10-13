@@ -21,7 +21,7 @@ Photoshop to maya textures, runs UI in photoshop to save individual layer groups
 
 
 
-<B><U>USD Rreference file</U></B>
+<B><I>USD Rreference file</I></B>
 
 C++ file containing few basic USD codes as reference.
 
