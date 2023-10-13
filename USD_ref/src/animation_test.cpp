@@ -21,10 +21,14 @@ void anim_test::anim_test_usd()
 	
 	pxr::UsdGeomCube cube1 = pxr::UsdGeomCube::Define(stage, pxr::SdfPath("/root/xform_cube/cube"));
 
-	pxr::UsdGeomXformOp rot = xform.AddRotateZOp();
-	rot.Set(0.0f, 0);
-	rot.Set(90.0f, 50);
+	pxr::UsdGeomXformOp Zrot = xform.AddRotateZOp();
+	Zrot.Set(0.0f, 0);
+	Zrot.Set(90.0f, 50);
 
+	pxr::UsdGeomXformOp Xrot = xform.AddRotateXOp();
+	Xrot.Set(0.0f, 0);
+	Xrot.Set(45.0f, 25);
+	Xrot.Set(0.0f, 50);
 
 	stage->SetStartTimeCode(1);
 	stage->SetEndTimeCode(50);
