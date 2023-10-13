@@ -26,6 +26,8 @@ Photoshop to maya textures, runs UI in photoshop to save individual layer groups
 
 C++ file containing few basic USD codes as reference.
 
+Edit file paths in C++ file to be used for generated .usda files
+
 Build using cmake
 
 Edit CMakeLists.txt file to point to right directories and run below commands
