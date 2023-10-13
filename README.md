@@ -2,7 +2,7 @@
 
 collection of my works and references
 
-For maya tools
+<B><I>maya tools</I></B>
 
 maya tools collection All scripts created and tested with maya 2016
 
