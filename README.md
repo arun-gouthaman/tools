@@ -21,3 +21,13 @@ Photoshop to maya textures, runs UI in photoshop to save individual layer groups
 USD Rreference file
 
 C++ file containing few basic USD codes as reference.
+
+Build using cmake
+
+Edit CMakeLists.txt file to point to right directories and run below commands
+
+mkdir build; cd build
+
+cmake .. -G "Visual Studio 16 2019"
+
+Above commands will generate visual studio project, set the configuration to "RelWithDebInfo" and build.
