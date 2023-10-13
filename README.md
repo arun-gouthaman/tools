@@ -18,8 +18,10 @@ Spiral script not included in menu Will be included later with UI
 
 Photoshop to maya textures, runs UI in photoshop to save individual layer groups as individual images and update texture in maya if maya is open and texture is present in scene
 
+  
 <B>*************************************************************************************************************************************************</B>
 
+  
 <B><I>USD Rreference file</I></B>
 
 C++ file containing few basic USD codes as reference.
