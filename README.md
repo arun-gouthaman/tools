@@ -8,7 +8,7 @@ maya tools collection All scripts created and tested with maya 2016
 
 Copy all files to maya scripts folder and run below command to display menu
 
-import CustomMenu
+```import CustomMenu```
 
 Menu - Object Creator - Custom tools - Motion path(loop) - Joint placement - Center (object) - Center (component) - Insert joints - Center aimed at vertex - Chain along edge loops - Loop from edge - Continue along loops - IK Spline setup - Curve through points - Delete display layers - Rearrange deformers - Rename deformer nodes - Controls - Create control - Manage shapes - replace instance nodes
 
@@ -26,8 +26,8 @@ Build using cmake
 
 Edit CMakeLists.txt file to point to right directories and run below commands
 
-mkdir build; cd build
+```mkdir build; cd build```
 
-cmake .. -G "Visual Studio 16 2019"
+```cmake .. -G "Visual Studio 16 2019"```
 
 Above commands will generate visual studio project, set the configuration to "RelWithDebInfo" and build.
