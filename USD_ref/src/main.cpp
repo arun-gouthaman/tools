@@ -1,5 +1,6 @@
 #include <iostream>
 #include<optional>
+#include<filesystem>
 
 #include <pxr/usd/usdGeom/sphere.h>
 #include <pxr/usd/usdGeom/xform.h>
@@ -138,7 +139,7 @@ void resolve_info(UsdPrim prim, TfToken attr_name)
 // Create .usda file with prim spheres for test
 UsdStageRefPtr spheres_test(std::string sphere_file_name)
 {
-	std::string usd_file = "C://my_files//USD_Trainig//CPP//helloworld//usda_files//" + sphere_file_name + ".usda";
+	std::string usd_file = "C://my_files//USD_Trainig//CPP//USD_ref//usda_files//" + sphere_file_name + ".usda";
 	UsdStageRefPtr stage = get_stage(usd_file);
 	UsdPrim root_prim = stage->DefinePrim(SdfPath("/root"));
 	UsdGeomXform xform_sphere1 = create_xform(stage, SdfPath("/root/sphere1"));
@@ -182,7 +183,7 @@ UsdStageRefPtr spheres_test(std::string sphere_file_name)
 // Resolve info test, get the attribute's source
 void resolve_info_test()
 {
-	UsdStageRefPtr stage = UsdStage::Open("C:\\my_files\\USD_Trainig\\CPP\\helloworld\\usda_files\\resolve_info\\usd_resolve_info.usda");
+	UsdStageRefPtr stage = UsdStage::Open("C:\\my_files\\USD_Trainig\\CPP\\USD_ref\\usda_files\\resolve_info\\usd_resolve_info.usda");
 
 	UsdPrim prim = stage->GetPrimAtPath(SdfPath("/PrimWithValueClips"));
 	UsdAttribute attr = get_attr(prim, TfToken("value_clipped_property"));
@@ -200,7 +201,7 @@ UsdStageRefPtr create_reference()
 	UsdPrim prim = stage->GetPrimAtPath(SdfPath("/root"));
 	std::string identifier = sphere_root->GetIdentifier();
 
-	UsdStageRefPtr main_stage = get_stage("C://my_files//USD_Trainig//CPP//helloworld//usda_files//main_file.usda");
+	UsdStageRefPtr main_stage = get_stage("C://my_files//USD_Trainig//CPP//USD_ref//usda_files//main_file.usda");
 
 	UsdPrim main_prim = main_stage->DefinePrim(SdfPath("/root"));
 
@@ -225,7 +226,7 @@ UsdStageRefPtr create_sublayer()
 
 
 
-	UsdStageRefPtr main_stage = get_stage("C://my_files//USD_Trainig//CPP//helloworld//usda_files//main_file.usda");
+	UsdStageRefPtr main_stage = get_stage("C://my_files//USD_Trainig//CPP//USD_ref//usda_files//main_file.usda");
 
 	UsdPrim main_prim = main_stage->DefinePrim(SdfPath("/root"));
 
@@ -248,7 +249,7 @@ UsdStageRefPtr sub_layer_edit_target_test()
 {
 	create_sublayer();
 
-	UsdStageRefPtr stage = UsdStage::Open("C://my_files//USD_Trainig//CPP//helloworld//usda_files//main_file.usda");
+	UsdStageRefPtr stage = UsdStage::Open("C://my_files//USD_Trainig//CPP//USD_ref//usda_files//main_file.usda");
 
 	std::cout << "EDIT TARGET: " << stage->GetEditTarget().GetLayer()->GetDisplayName() << "\n";
 
@@ -278,7 +279,7 @@ UsdStageRefPtr ref_layer_edit_target_test()
 {
 	create_reference();
 
-	UsdStageRefPtr stage = UsdStage::Open("C://my_files//USD_Trainig//CPP//helloworld//usda_files//main_file.usda");
+	UsdStageRefPtr stage = UsdStage::Open("C://my_files//USD_Trainig//CPP//USD_ref//usda_files//main_file.usda");
 
 	UsdPrimRange prim_range = stage->Traverse();
 
@@ -374,7 +375,8 @@ void change_block_test()
 	stage->Save();
 }
 
-int main()
+
+int main(int argc, char* argv[])
 {
 	change_block_test();
 	return 0;
