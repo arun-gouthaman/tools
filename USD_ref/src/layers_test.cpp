@@ -116,10 +116,11 @@ UsdStageRefPtr layers_test::ref_layer_edit_target_test()
 						flag = true;
 						break;
 					}
-					if (flag)
-					{
-						break;
-					}
+				}
+
+				if (flag)
+				{
+					break;
 				}
 			}
 		}

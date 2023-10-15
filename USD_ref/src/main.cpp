@@ -7,6 +7,6 @@ using namespace pxr;
 
 int main(int argc, char* argv[])
 {
-	anim_test::anim_test_usd();
+	layers_test::ref_layer_edit_target_test();
 	return 0;
 }
